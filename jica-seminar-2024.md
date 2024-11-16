@@ -536,7 +536,7 @@ generate_tile:
         gdal2tiles.py --xyz -s EPSG:4326 -z 0-11 temp.vrt
 
 serve:
-        docker run -p 8080:80 -v $(PWD)/temp:/usr/share/nginx/html:ro nginx
+        serve -p 8000 temp/
 ```
 
 Makefile is simple to run tasks.
@@ -550,7 +550,7 @@ task_name:
 
 # Result
 
-Access to http://<your host>.local:8080/leaflet.html
+Access to http://<your host>.local:8000/leaflet.html
 
 ![height:300px](./images/11_gm_raster_tile.png)
 
@@ -572,14 +572,14 @@ cd ~/jica_scripts/raster_tile_plateau
 make fetch # Download GeoTIFF file from Plateau archive and unarchive
 make buildvrt # Generate VRT file from GeoTIFF files.
 make generate_tile # Convert VRT file to XYZ tile using gdal2tiles.
-make serve # run nginx
+make serve # run serve
 ```
 
 ---
 
 # Result
 
-Access to http://<your host>.local:8080/leaflet.html
+Access to http://<your host>.local:8000/leaflet.html
 
 ![height:300px](./images/13_plateau_raster_tile.png)
 
@@ -696,9 +696,7 @@ generate:
 
 ```Makefile
 tileserver-gl:
-	docker run --rm -it -v $(PWD):/data -p 8080:80 \
-	  maptiler/tileserver-gl-light \
-	  -p 80 --file /data/lka.mbtiles
+	tileserver-gl-light --port 8000 --bind 0.0.0.0 --file lka.mbtiles
 ```
 
 ---
@@ -736,7 +734,7 @@ https://smellman.github.io/pmtiles-example/
 cd ~/jica_scripts/vector_tile
 make practice
 ```
-Open http://<your host>.local:8080/ in your browser.
+Open http://<your host>.local:8000/ in your browser.
 
 Open other terminal and run following command.
 
