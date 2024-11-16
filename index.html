@@ -745,7 +745,7 @@ make serve <span class="hljs-comment"># run nginx</span>
         gdal2tiles.py --xyz -s EPSG:4326 -z 0-11 temp.vrt
 
 <span class="hljs-section">serve:</span>
-        docker run -p 8080:80 -v <span class="hljs-variable">$(PWD)</span>/temp:/usr/share/nginx/html:ro nginx
+        serve -p 8000 temp/
 </code></pre>
 <p>Makefile is simple to run tasks.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-Makefile"><span class="hljs-section">task_name:</span>
@@ -755,7 +755,7 @@ make serve <span class="hljs-comment"># run nginx</span>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-footer="JICA Seminar 2024" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="52" style="--footer:JICA Seminar 2024;--paginate:true;--theme:default;" data-marpit-pagination-total="99">
 <h1 id="result">Result</h1>
-<p>Access to http://&lt;your host&gt;.local:8080/leaflet.html</p>
+<p>Access to http://&lt;your host&gt;.local:8000/leaflet.html</p>
 <p><img src="./images/11_gm_raster_tile.png" alt="" style="height:300px;" /></p>
 <footer>JICA Seminar 2024</footer>
 </section>
@@ -774,13 +774,13 @@ make serve <span class="hljs-comment"># run nginx</span>
 make fetch <span class="hljs-comment"># Download GeoTIFF file from Plateau archive and unarchive</span>
 make buildvrt <span class="hljs-comment"># Generate VRT file from GeoTIFF files.</span>
 make generate_tile <span class="hljs-comment"># Convert VRT file to XYZ tile using gdal2tiles.</span>
-make serve <span class="hljs-comment"># run nginx</span>
+make serve <span class="hljs-comment"># run serve</span>
 </code></pre>
 <footer>JICA Seminar 2024</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-footer="JICA Seminar 2024" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="55" style="--footer:JICA Seminar 2024;--paginate:true;--theme:default;" data-marpit-pagination-total="99">
 <h1 id="result-1">Result</h1>
-<p>Access to http://&lt;your host&gt;.local:8080/leaflet.html</p>
+<p>Access to http://&lt;your host&gt;.local:8000/leaflet.html</p>
 <p><img src="./images/13_plateau_raster_tile.png" alt="" style="height:300px;" /></p>
 <footer>JICA Seminar 2024</footer>
 </section>
@@ -903,9 +903,7 @@ make tileserver-gl <span class="hljs-comment"># run tileserver-gl-light</span>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-footer="JICA Seminar 2024" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="64" style="--footer:JICA Seminar 2024;--paginate:true;--theme:default;" data-marpit-pagination-total="99">
 <h1 id="makefile-33">Makefile (3/3)</h1>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-Makefile"><span class="hljs-section">tileserver-gl:</span>
-	docker run --rm -it -v <span class="hljs-variable">$(PWD)</span>:/data -p 8080:80 \
-	  maptiler/tileserver-gl-light \
-	  -p 80 --file /data/lka.mbtiles
+	tileserver-gl-light --port 8000 --bind 0.0.0.0 --file lka.mbtiles
 </code></pre>
 <footer>JICA Seminar 2024</footer>
 </section>
@@ -950,7 +948,7 @@ make tileserver-gl <span class="hljs-comment"># run tileserver-gl-light</span>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">cd</span> ~/jica_scripts/vector_tile
 make practice
 </code></pre>
-<p>Open http://&lt;your host&gt;.local:8080/ in your browser.</p>
+<p>Open http://&lt;your host&gt;.local:8000/ in your browser.</p>
 <p>Open other terminal and run following command.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">cd</span> ~/jica_scripts/vector_tile
 nano style-practice.yml
