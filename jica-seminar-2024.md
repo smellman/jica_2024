@@ -73,8 +73,24 @@ https://bit.ly/xxxx
 sudo apt install -y git make
 git clone https://github.com/smellman/jica_scripts.git
 cd jica_scripts/system
-sudo HOME=$HOME USER=$USER make install
+sudo make install
 ```
+
+---
+
+# Check your ip address
+
+```bash
+ip addr
+```
+
+Check your ip address like following.
+
+```
+inet 192.168.0.16/24 brd 192.168.0.255 scope global dynamic noprefixroute eth0
+```
+
+In this case, your ip address is `192.168.0.16`.
 
 ---
 
@@ -550,7 +566,7 @@ task_name:
 
 # Result
 
-Access to http://<your host>.local:8000/leaflet.html
+Access to http://<your ip>:8000/leaflet.html
 
 ![height:300px](./images/11_gm_raster_tile.png)
 
@@ -579,7 +595,7 @@ make serve # run serve
 
 # Result
 
-Access to http://<your host>.local:8000/leaflet.html
+Access to http://<your ip>:8000/leaflet.html
 
 ![height:300px](./images/13_plateau_raster_tile.png)
 
@@ -608,7 +624,7 @@ make tileserver-gl # run tileserver-gl-light
 
 # Result
 
-Access to http://<your host>.local:8081/
+Access to http://<your ip>:8000/
 
 ![height:300px](./images/14_2_tileserver-gl.png)
 
@@ -734,7 +750,7 @@ https://smellman.github.io/pmtiles-example/
 cd ~/jica_scripts/vector_tile
 make practice
 ```
-Open http://<your host>.local:8000/ in your browser.
+Open http://<your ip>:8000/ in your browser.
 
 Open other terminal and run following command.
 
@@ -967,7 +983,7 @@ build:
 make serve
 ```
 
-Open http://<your host>.local:8000/ in your browser.
+Open http://<your ip>:8000/ in your browser.
 
 ![bg right 100%](./images/24_result.png)
 
@@ -1104,8 +1120,7 @@ see: https://github.com/smellman/pmtiles-example
 
 ```bash
 cd ~/jica_scripts/system
-make ipfs-init
-make ipfs-daemon
+make ipfs
 ```
 
 ---
@@ -1140,10 +1155,8 @@ sources:
   global_map:
     type: vector
     url: >-
-      pmtiles://https://smb.optgeo.org/ipfs/<Your CID>
+      pmtiles://http://<your ip>:8080/ipfs/<Your CID>
 ```
-
-https://smb.optgeo.org/ipfs/ is IPFS gateway server running by Hidenori Fujimura.
 
 ---
 
@@ -1156,7 +1169,7 @@ make build-ipfs
 make serve
 ```
 
-Open http://<your host>.local:8000/index-ipfs.html in your browser.
+Open http://<your ip>:8000/index-ipfs.html in your browser.
 
 ---
 
