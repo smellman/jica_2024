@@ -1,4 +1,4 @@
-SRC = jica-seminar-2023.md
+SRC = jica-seminar-2024.md
 HTML = $(SRC:%.md=%.html)
 PDF = $(SRC:%.md=%.pdf)
 PPTX = $(SRC:%.md=%.pptx)

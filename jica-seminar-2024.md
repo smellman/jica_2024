@@ -59,9 +59,9 @@ https://smellman.github.io/jica_2024/
 
 - Connect to SSID "vectortiles"
 - Launch your browser
-- Access following URL (seminar only)
+- Access following URL
 
-https://bit.ly/xxxx
+https://bit.ly/xxxxxx
 
 - Access to your host.
 
@@ -421,12 +421,11 @@ https://docs.mapbox.com/mapbox-gl-js/style-spec/
 
 ---
 
-# Software - nginx
+# Software - serve
 
-- nginx is a web server.
-- nginx is easy to use for both beginners and experts.
-- nginx is a standard tool of UNIX and Linux.
-  - This presentation use nginx for serving tiles.
+- serve is a web server.
+- serve is easy to use for beginners.
+  - This presentation use serve for serving tiles.
 
 ---
 
@@ -435,13 +434,6 @@ https://docs.mapbox.com/mapbox-gl-js/style-spec/
 - tileserver-gl-light is a vector tile server.
 - useful for inspecting vector tile.
 
----
-
-# Software - docker
-
-- docker is a container platform.
-- docker is easy to use for both beginners and experts.
-- This presentation use docker for serving tiles or running tileserver-gl-light.
 
 ---
 
